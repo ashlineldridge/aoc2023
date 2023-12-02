@@ -70,6 +70,7 @@ fn parse_num(line: &str, dir: ParseDirection, use_digit_names: bool) -> Result<u
     parse_num(line, dir, use_digit_names)
 }
 
+// This doesn't actually require `OnceLock` - I was gonna use a regex but CBF.
 fn digit_names() -> &'static [(u32, &'static str); 9] {
     static DIGITS: OnceLock<[(u32, &str); 9]> = OnceLock::new();
     DIGITS.get_or_init(|| {
